@@ -4,6 +4,7 @@ using System.Collections;
 public class charmove : MonoBehaviour {
 
 	public float speed;
+	public float radius;
 	CharacterController controller;
 	public AudioSource audioSourceLeft;
 	public AudioSource audioSourceRight;
@@ -40,5 +41,8 @@ public class charmove : MonoBehaviour {
 	public void move() {
 		moved = true;
 		transform.position += transform.forward * speed;
+		if (Vector3.Magnitude(transform.localPosition) > radius) {
+			transform.localPosition = Vector3.ClampMagnitude(transform.localPosition, radius);
+		}
 	}
 }
