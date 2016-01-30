@@ -102,6 +102,7 @@ public class GyroController : MonoBehaviour
 	private void AttachGyro()
 	{
 		gyroEnabled = true;
+		Input.gyro.enabled = true;
 		ResetBaseOrientation();
 		UpdateCalibration(true);
 		UpdateCameraBaseRotation(true);

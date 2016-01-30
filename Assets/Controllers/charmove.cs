@@ -5,7 +5,8 @@ public class charmove : MonoBehaviour {
 
 	public float speed;
 	CharacterController controller;
-	public AudioSource audioSource;
+	public AudioSource audioSourceLeft;
+	public AudioSource audioSourceRight;
 
 	// Use this for initialization
 	void Start () {
@@ -17,10 +18,27 @@ public class charmove : MonoBehaviour {
 //		move();
 	}
 
+	bool moved = false;
+	bool movedLeft = false;
+
+	public void moveLeft() {
+		if (!moved || !movedLeft) {
+			audioSourceLeft.Play();
+			move();
+			movedLeft = true;
+		}
+	}
+
+	public void moveRight() {
+		if (!moved || movedLeft) {
+			audioSourceRight.Play();
+			move();
+			movedLeft = false;
+		}
+	}
+
 	public void move() {
+		moved = true;
 		transform.position += transform.forward * speed;
-		audioSource.Play();
-//		Vector3 move = Quaternion.Euler(0, transform.eulerAngles.y, 0) * new Vector3(0, 0, speed);
-//		transform.Translate(move);
 	}
 }
