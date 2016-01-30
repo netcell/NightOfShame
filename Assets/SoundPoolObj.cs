@@ -4,6 +4,10 @@ using System.Collections;
 public class SoundPoolObj : MonoBehaviour {
 
 	public GameObject objectPool;
+	public AudioSource source;
+
+	void Start() {
+	}
 
 	public void attach(Transform parent) {
 		transform.parent = parent;
