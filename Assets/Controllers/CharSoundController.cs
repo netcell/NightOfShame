@@ -9,6 +9,8 @@ public class CharSoundController : MonoBehaviour {
 	public AudioSource audio_scare;
 	AttackedController attackedController;
 
+	public EndingAudio endingAudio;
+
 	// Use this for initialization
 	void Start () {
 		audioSource = GetComponent<AudioSource>();
@@ -20,6 +22,12 @@ public class CharSoundController : MonoBehaviour {
 			if (!attackedController.beingAttacked) {
 				attackedController.Play();
 			}
+		} else if (other.gameObject.tag == "police1") {
+			endingAudio.end1();
+		} else if (other.gameObject.tag == "police2") {
+			endingAudio.end2();
+		} else if (other.gameObject.tag == "police3") {
+			endingAudio.end3();
 		}
 	}
 }

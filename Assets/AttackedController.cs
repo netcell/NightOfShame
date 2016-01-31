@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -12,6 +14,9 @@ public class AttackedController : MonoBehaviour {
 	public List<GameObject> tobePaused;
 	float[] panStereoOptions = new float[]{0.8f, -0.8f};
 	public bool beingAttacked = false;
+
+	public Button button;
+	public Text text;
 
 	public void Play() {
 		if (beingAttacked) return;
@@ -33,17 +38,17 @@ public class AttackedController : MonoBehaviour {
 		source.volume = 0.6f;
 		source.panStereo = 0;
 		source.Play();
-		while (source.isPlaying) {
-			yield return null;
-		}
+		while (source.isPlaying) yield return null;
+
+		text.text = "GAME OVER";
 
 		source.clip = attackedClips[Random.Range(0, attackedClips.Count)];
 		source.volume = 1f;
 		source.panStereo = panStereoOptions[Random.Range(0, panStereoOptions.Length)];
 		source.Play();
-		while (source.isPlaying) {
-			yield return null;
-		}
+		while (source.isPlaying) yield return null;
+
+		button.gameObject.SetActive(true);
 
 		source.clip = cryClip;
 		source.loop = true;
