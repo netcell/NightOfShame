@@ -30,6 +30,7 @@ public class AttackedController : MonoBehaviour {
 	IEnumerator cry() {
 		source.clip = caughtClip;
 		source.loop = false;
+		source.volume = 0.6f;
 		source.panStereo = 0;
 		source.Play();
 		while (source.isPlaying) {
@@ -37,6 +38,7 @@ public class AttackedController : MonoBehaviour {
 		}
 
 		source.clip = attackedClips[Random.Range(0, attackedClips.Count)];
+		source.volume = 1f;
 		source.panStereo = panStereoOptions[Random.Range(0, panStereoOptions.Length)];
 		source.Play();
 		while (source.isPlaying) {
