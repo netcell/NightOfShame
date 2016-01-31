@@ -17,4 +17,8 @@ public class MenuController : MonoBehaviour {
 	public void Play() {
 		SceneManager.LoadScene("Intro");
 	}
+
+	public void Replay() {
+		SceneManager.LoadScene("Game");
+	}
 }
